@@ -95,3 +95,13 @@ capybara-*html
 vendor/extensions/**/spec/dummy
 
 /config/database.yml
+/public/uploads
+/public/assets
+/.vagrant
+/Vagrantfile
+/solr
+
+/.capistrano
+/config/deploy.rb
+/config/deploy/*
+/Capfile
