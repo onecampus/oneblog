@@ -22,6 +22,7 @@ rake db:migrate # 导入数据库表
 rake db:seed # 导入测试数据
 rails s # 启动开发服务器
 # 访问 http://127.0.0.1:3000
+# 访问 http://127.0.0.1:3000/refinery
 
 # 如果需要重置数据库
 rake db:reset
