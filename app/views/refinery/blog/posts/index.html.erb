@@ -132,7 +132,6 @@ jQuery(document).ready(function() {
           <% end if Refinery::Pages.default_parts.many? -%>
 
           <%= render '/refinery/blog/shared/body_content_right' %>
-          <%= render "/refinery/content_page" %>
           <!--
           <div class="tabs">
             <ul class="nav nav-tabs">
@@ -266,5 +265,7 @@ jQuery(document).ready(function() {
         </aside>
       </div>
     </div>
+
+    <%= render "/refinery/content_page" %>
   </div>
 </section>
