@@ -1,0 +1,270 @@
+<% content_for :page_title do %>
+学壹传媒博客
+<% end %>
+
+<% content_for :stylesheets_only_this_page do %>
+<link rel="stylesheet" href="/cliponefrontend/assets/plugins/bootstrap-social-buttons/social-buttons-3.css">
+<link rel="stylesheet" href="/cliponefrontend/assets/plugins/flex-slider/flexslider.css">
+<% end %>
+
+<% content_for :javascripts_only_this_page do %>
+<script src="/cliponefrontend/assets/plugins/flex-slider/jquery.flexslider.js"></script>
+<script>
+jQuery(document).ready(function() {
+  Main.init();
+});
+</script>
+<% end %>
+
+
+<!-- start: STYLE SELECTOR BOX -->
+<div id="style_selector" class="hidden-xs">
+  <div id="style_selector_container">
+    <div class="style-main-title">
+      Style Selector
+    </div>
+    <div class="box-title">
+      Predefined Color Schemes
+    </div>
+    <div class="images icons-color">
+      <a id="blue" href="#"><img class="active" alt="" src="/cliponefrontend/assets/images/blue.png"></a>
+      <a id="purple" href="#"><img alt="" src="/cliponefrontend/assets/images/purple.png"></a>
+      <a id="red" href="#"><img alt="" src="/cliponefrontend/assets/images/red.png"></a>
+      <a id="orange" href="#"><img alt="" src="/cliponefrontend/assets/images/orange.png"></a>
+      <a id="green" href="#"><img alt="" src="/cliponefrontend/assets/images/green.png"></a>
+    </div>
+    <div style="height:25px;line-height:25px; text-align: center">
+      <a class="clear_style" href="#">
+        Clear Styles
+      </a>
+      <a class="save_style" href="#">
+        Save Styles
+      </a>
+    </div>
+  </div>
+  <div class="style-toggle close"></div>
+</div>
+<!-- end: STYLE SELECTOR BOX -->
+<section class="page-top">
+  <div class="container">
+    <div class="col-md-4 col-sm-4">
+      <h1>Blog Page</h1>
+    </div>
+    <div class="col-md-8 col-sm-8">
+      <ul class="pull-right breadcrumb">
+        <li>
+          <a href="index.html">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Features
+          </a>
+        </li>
+        <li class="active">
+          Blog Page
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="blog-posts">
+
+          <% content_for :body do %>
+            <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
+
+            <% if @posts.any? %>
+            <section id="blog_posts">
+              <%= render :partial => "/refinery/blog/shared/post", :collection => @posts %>
+              <%= will_paginate @posts %>
+            </section>
+            <% else %>
+            <p><%= t('.no_blog_articles_yet') %></p>
+            <% end %>
+          <% end %>
+
+          <!-- <ul class="pagination">
+            <li>
+              <a href="#">«</a>
+            </li>
+            <li class="active">
+              <a href="#">
+                1
+                                      </a>
+            </li>
+            <li>
+              <a href="#">
+                2
+                                      </a>
+            </li>
+            <li>
+              <a href="#">
+                3
+                                      </a>
+            </li>
+            <li>
+              <a href="#">
+                »
+                                      </a>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+      <div class="col-md-3">
+        <aside class="sidebar">
+          <form>
+            <div class="input-group">
+              <input type="text" id="s" name="s" placeholder="Search..." class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-main-color" type="submit">
+                  <i class="fa fa-search"></i>
+                </button> </span>
+            </div>
+          </form>
+          <hr>
+          <% content_for :side_body_prepend do -%>
+          <%= raw @page.content_for(Refinery::Pages.default_parts.second.to_sym) %>
+          <% end if Refinery::Pages.default_parts.many? -%>
+
+          <%= render '/refinery/blog/shared/body_content_right' %>
+          <%= render "/refinery/content_page" %>
+          <!--
+          <div class="tabs">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a data-toggle="tab" href="#popularPosts"><i class="fa fa-star"></i> Popular</a>
+              </li>
+              <li>
+                <a data-toggle="tab" href="#recentPosts">
+                  Recent
+                                          </a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="popularPosts" class="tab-pane active">
+                <ul class="post-list">
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img alt="" src="/cliponefrontend/assets/images/image03_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Nullam Vitae Nibh Un Odiosters
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img alt="" src="/cliponefrontend/assets/images/image04_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Vitae Nibh Un Odiosters
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img alt="" src="/cliponefrontend/assets/images/image05_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Odiosters Nullam Vitae
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div id="recentPosts" class="tab-pane">
+                <ul class="post-list">
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img class="img-responsive" alt="" src="/cliponefrontend/assets/images/image06_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Vitae Nibh Un Odiosters
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img alt="" src="/cliponefrontend/assets/images/image07_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Odiosters Nullam Vitae
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="post-image">
+                      <div class="img-thumbnail">
+                        <a href="#">
+                          <img alt="" src="/cliponefrontend/assets/images/image08_thumb.jpg">
+                        </a>
+                      </div>
+                    </div>
+                    <div class="post-info">
+                      <a href="#">
+                        Nullam Vitae Nibh Un Odiosters
+                                                </a>
+                      <div class="post-meta">
+                        Jan 10, 2014
+                                                </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+          <hr>
+          <h4>About Us</h4>
+          <p>
+            Culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus.
+                                    </p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
