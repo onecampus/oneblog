@@ -1,13 +1,51 @@
-<!--
-http://www.freshdesignweb.com/free-one-page-website-templates.html
-
-http://tympanus.net/Freebies/HalcyonDaysTemplate/
-http://tympanus.net/codrops/2014/07/14/freebie-halcyon-days-one-page-website-template/
-http://www.templatemo.com/templates/templatemo_401_sprint/
-
-http://shapebootstrap.net/demo/html/xeon/
-
-http://preview.artlessthemes.com/FlatoHTML
-
--->
-<%= yield %>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+  <!-- start: HEAD -->
+  <head>
+    <title><%= yield :page_title %></title>
+    <!-- start: META -->
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <%= render "/layouts/shared/stylesheets" -%>
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <%= yield :stylesheets_only_this_page %>
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <!-- start: HTML5SHIV FOR IE8 -->
+    <!--[if lt IE 9]>
+      <script src="/cliponefrontend/assets/plugins/html5shiv.js"></script>
+    <![endif]-->
+    <!-- end: HTML5SHIV FOR IE8 -->
+  </head>
+  <!-- end: HEAD -->
+  <body>
+    <!-- start: HEADER -->
+    <%= render "/layouts/shared/header" -%>
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+      <%= yield %>
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <%= render "/layouts/shared/footer" %>
+    <!-- end: FOOTER -->
+    <!-- start: MAIN JAVASCRIPTS -->
+    <%= render "/layouts/shared/javascripts" %>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <%= yield :javascripts_only_this_page %>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+  </body>
+</html>

@@ -6,8 +6,10 @@
   <%= render 'comments' %>
 <% end %>
 
+<!-- RSS源 分类 标签 其他博文 -->
 <%= render '/refinery/blog/shared/body_content_right' %>
 
+<!-- 文章内容和评论 -->
 <%= render "/refinery/content_page", :remove_automatic_sections => true %>
 
 <% content_for :stylesheets, stylesheet_link_tag('refinery/blog/frontend') %>

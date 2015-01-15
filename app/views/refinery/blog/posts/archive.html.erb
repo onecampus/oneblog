@@ -1,4 +1,27 @@
-<% content_for :title, "#{t('.blog_archive_for', :date => @date_title)}" %>
+
+<% content_for :page_title, "#{t('.blog_archive_for', :date => @date_title)}" %>
+
+<% content_for :stylesheets_only_this_page do %>
+<link rel="stylesheet" href="/cliponefrontend/assets/plugins/revolution_slider/rs-plugin/css/settings.css">
+<link rel="stylesheet" href="/cliponefrontend/assets/plugins/flex-slider/flexslider.css">
+<link rel="stylesheet" href="/cliponefrontend/assets/plugins/colorbox/example2/colorbox.css">
+<% end %>
+
+<% content_for :javascripts_only_this_page do %>
+<script src="/cliponefrontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="/cliponefrontend/assets/plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/cliponefrontend/assets/plugins/flex-slider/jquery.flexslider.js"></script>
+<script src="/cliponefrontend/assets/plugins/stellar.js/jquery.stellar.min.js"></script>
+<script src="/cliponefrontend/assets/plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="/cliponefrontend/assets/js/index.js"></script>
+<script>
+jQuery(document).ready(function() {
+  Main.init();
+  Index.init();
+  $.stellar();
+});
+</script>
+<% end %>
 
 <% content_for :body do %>
   <h1><%= t('.blog_archive_for', :date => @date_title) %></h1>
